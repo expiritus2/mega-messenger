@@ -1,0 +1,44 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/functions";
+
+.apps {
+
+  .list {
+    list-style: none;
+    padding: setUnit(20) 0;
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      cursor: pointer;
+      padding: setUnit(5);
+
+      .element {
+        display: flex;
+        align-items: center;
+      }
+
+      .remove {
+        display: none;
+      }
+
+      &:hover {
+        .remove {
+          display: block;
+        }
+      }
+
+      &.active {
+        background: #ffffff;
+        color: #000000;
+        border-radius: setUnit(5);
+      }
+
+      .icon {
+        margin-right: setUnit(5);
+      }
+    }
+  }
+}

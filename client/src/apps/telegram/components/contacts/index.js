@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Messages = ({ className }) => (
+const Contacts = ({ className }) => (
     <div className={className}>
-        Messages
+        Telegram Contacts
     </div>
 );
 
-Messages.propTypes = {
+Contacts.propTypes = {
     className: PropTypes.string,
 };
 
-Messages.defaultProps = {
+Contacts.defaultProps = {
     className: '',
 };
 
-export default Messages;
+export default Contacts;

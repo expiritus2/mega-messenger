@@ -26,12 +26,18 @@
 }
 
 @mixin input-field() {
-  border: 1px solid $grey-color;
+  border: 1px solid darken($grey-color, 20%);
   border-radius: setUnit(5);
-  padding: setUnit(5);
+  padding: setUnit(5) setUnit(15);
+
+  &:focus {
+    @include box-shadow();
+    outline: none;
+  }
 }
 
 @mixin button() {
+  @include box-shadow();
   cursor: pointer;
   padding: setUnit(6) setUnit(15);
   border-radius: setUnit(5);
@@ -42,6 +48,7 @@
   outline: none;
 
   &:hover {
+    @include box-shadow-hover();
     background: #6b47b8;
   }
 

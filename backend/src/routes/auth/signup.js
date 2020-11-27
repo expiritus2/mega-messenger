@@ -1,4 +1,3 @@
-/*eslint-env es6*/
 const express = require('express');
 
 const router = express.Router();

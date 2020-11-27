@@ -1,31 +1,9 @@
-import { apiServer } from 'settings/api';
-import { getPromiseAllSettledProp, getPromiseAllSettledReason } from 'store/helpers';
+import { TELEGRAM } from 'settings/app/messengers';
 
-export function getTestData(cfg) {
-    const postsReq = getPosts(cfg);
-    const commentsReq = getComments(cfg);
-
-    return new Promise((resolve, reject) => {
-        Promise
-            .allSettled([postsReq, commentsReq])
-            .then(([posts, comments]) => {
-                const data = {
-                    posts: getPromiseAllSettledProp(posts), comments: getPromiseAllSettledProp(comments),
-                };
-                const meta = {
-                    posts: getPromiseAllSettledReason(posts), comments: getPromiseAllSettledReason(comments),
-                };
-
-                resolve({ data, meta });
-            })
-            .catch((err) => reject(err));
+export function fetchApps(/* cfg */) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({ data: { messengers: [TELEGRAM] } });
+        }, 1000);
     });
-}
-
-export function getPosts(cfg) {
-    return apiServer.get('/posts', cfg);
-}
-
-export function getComments(cfg) {
-    return apiServer.get('/comments', cfg);
 }

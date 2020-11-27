@@ -1,6 +1,9 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
+
+import { addApp } from 'store/effects/app';
 
 import { MESSENGERS } from 'settings/app/messengers';
 
@@ -8,24 +11,28 @@ import { useOutsideClick } from 'hooks';
 
 import styles from './styles.scss';
 
-const AddMessenger = ({ className }) => {
+const AddMessenger = ({ className, messengers, addAppInner }) => {
     const addRef = useRef();
     const [open, setOpen] = useState(false);
 
     useOutsideClick(addRef, () => setOpen(false));
 
     const onClick = useCallback(() => setOpen(!open), [open]);
+    const onAdd = useCallback((id) => addAppInner(id), [addAppInner]);
+
+    const uniqueMessengers = useMemo(() => (
+        MESSENGERS.filter((msgr) => !messengers.includes(msgr.id))
+    ), [messengers]);
 
     return (
         <div ref={addRef} className={classNames(className, styles.messengers)} onClick={onClick}>
-            <div onClick={onClick} className={styles.add}>Add Messenger</div>
+            <div onClick={onClick} className={styles.add}>Add</div>
             {open && (
                 <ul className={styles.list}>
-                    {MESSENGERS.map(({ name, Icon }) => (
-                        <li key={name} className={styles.item}>
-                            <Icon />
-                            {' '}
-                            { name }
+                    {uniqueMessengers.map(({ id, displayName, Icon }) => (
+                        <li key={id} className={styles.item} onClick={() => onAdd(id)}>
+                            <Icon className={styles.icon} />
+                            <span className={styles.name}>{displayName}</span>
                         </li>
                     ))}
                 </ul>
@@ -36,10 +43,24 @@ const AddMessenger = ({ className }) => {
 
 AddMessenger.propTypes = {
     className: PropTypes.string,
+    addAppInner: PropTypes.func.isRequired,
+    messengers: PropTypes.arrayOf(PropTypes.string),
 };
 
 AddMessenger.defaultProps = {
     className: '',
+    messengers: [],
 };
 
-export default AddMessenger;
+function mapStateToProps(state) {
+    return {
+        messengers: state.app.state.messengers,
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    {
+        addAppInner: addApp,
+    },
+)(AddMessenger);

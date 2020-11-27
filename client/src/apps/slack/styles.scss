@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+@import "../../styles/functions";
+
+.main {
+  display: flex;
+  width: 100%;
+
+  .contacts {
+    width: 10%;
+    min-width: setUnit(250);
+    padding: setUnit(20);
+    border-right: 1px solid darken($grey-color, 20);
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: setUnit(20);
+  }
+
+  .messages {
+    height: calc(100vh - #{setUnit(65)});
+  }
+}

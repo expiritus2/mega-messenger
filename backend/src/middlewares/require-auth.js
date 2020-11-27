@@ -1,8 +1,8 @@
-const { NotAuthorizedError } = require('../errors/not-authorized-error');
-
 const requireAuth = (req, res, next) => {
     if (!req.user) {
-        throw new NotAuthorizedError();
+        const error = new Error('Not authorized');
+        error.statusCode = 401;
+        throw error;
     }
 
     next();

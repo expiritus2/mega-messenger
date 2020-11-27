@@ -6,20 +6,17 @@
   height: 100vh;
 
   .sidebar {
-    width: 15%;
-    min-width: setUnit(300);
+    width: 5%;
+    min-width: setUnit(170);
     background: $grey-color;
     padding: setUnit(10) setUnit(20);
+    height: 100vh;
+    background: #333744;
+    overflow-y: auto;
   }
 
-  .main {
-    display: flex;
-    flex-direction: column;
-    padding: setUnit(10) setUnit(20);
+  .app {
+    //padding: setUnit(10) setUnit(20);
     width: 100%;
-  }
-
-  .messages {
-    height: calc(100vh - #{setUnit(50)});
   }
 }

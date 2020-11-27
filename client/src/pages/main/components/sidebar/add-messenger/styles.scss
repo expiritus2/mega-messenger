@@ -3,9 +3,12 @@
 @import "../../../../../styles/mixins";
 
 .messengers {
+  position: relative;
+
   .add {
     @include box-shadow();
 
+    text-align: center;
     cursor: pointer;
     background: #ffffff;
     padding: setUnit(5) setUnit(10);
@@ -19,6 +22,8 @@
   .list {
     @include box-shadow();
 
+    position: absolute;
+    width: 100%;
     list-style: none;
     padding: setUnit(5) 0;
     background: #ffffff;
@@ -28,6 +33,17 @@
     .item {
       cursor: pointer;
       padding: setUnit(5) setUnit(10);
+      display: flex;
+      align-items: center;
+
+      .icon {
+        margin-right: setUnit(5);
+        vertical-align: middle;
+      }
+
+      .name {
+        text-transform: capitalize;
+      }
 
       &:hover {
         background: $grey-color;
