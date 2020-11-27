@@ -1,0 +1,37 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/functions";
+@import "../../../../../styles/mixins";
+
+.messengers {
+  .add {
+    @include box-shadow();
+
+    cursor: pointer;
+    background: #ffffff;
+    padding: setUnit(5) setUnit(10);
+    border-radius: setUnit(5);
+
+    &:hover {
+      @include box-shadow-hover();
+    }
+  }
+
+  .list {
+    @include box-shadow();
+
+    list-style: none;
+    padding: setUnit(5) 0;
+    background: #ffffff;
+    margin-top: setUnit(2);
+    border-radius: setUnit(5);
+
+    .item {
+      cursor: pointer;
+      padding: setUnit(5) setUnit(10);
+
+      &:hover {
+        background: $grey-color;
+      }
+    }
+  }
+}

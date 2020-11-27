@@ -24,3 +24,33 @@
 @mixin box-shadow-hover($color: #000000) {
   box-shadow: 3px 5px 3px -3px rgba(0, 0, 0, 0.2), 3px 3px 3px 0px rgba(0, 0, 0, 0.14), 3px 3px 5px 0px rgba(0, 0, 0, 0.12);
 }
+
+@mixin input-field() {
+  border: 1px solid $grey-color;
+  border-radius: setUnit(5);
+  padding: setUnit(5);
+}
+
+@mixin button() {
+  cursor: pointer;
+  padding: setUnit(6) setUnit(15);
+  border-radius: setUnit(5);
+  background: #7C5CBF;
+  border: none;
+  color: #ffffff;
+  transition: background .3s ease;
+  outline: none;
+
+  &:hover {
+    background: #6b47b8;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    background: #7c5cbf94;
+  }
+}

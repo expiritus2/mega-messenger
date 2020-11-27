@@ -1,0 +1,6 @@
+@import "../../../styles/mixins";
+
+.input {
+  @include input-field();
+  width: 100%;
+}

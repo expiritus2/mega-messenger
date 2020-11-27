@@ -1,33 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import { load } from 'store/effects/app';
-import classNames from 'classnames';
+import { Sidebar, Messages, Input } from './components';
 
 import styles from './styles.scss';
 
-const Main = (props) => {
-    const onClick = () => {
-        const { loadInner } = props;
-        loadInner({});
-    };
-
-    return (
-        <div className={classNames(styles.container)}>
-            Main Page
-            <button type="button" onClick={onClick}>Click me</button>
+const Main = () => (
+    <div className={styles.container}>
+        <Sidebar className={styles.sidebar} />
+        <div className={styles.main}>
+            <Messages className={styles.messages} />
+            <Input />
         </div>
-    );
-};
+    </div>
+);
 
 Main.propTypes = {
-    loadInner: PropTypes.func.isRequired,
+
 };
 
-export default connect(
-    null,
-    {
-        loadInner: load,
-    },
-)(Main);
+export default connect(null)(Main);
