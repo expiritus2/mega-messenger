@@ -1,0 +1,26 @@
+{
+  "name": "mega-messenger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client:start": "concurrently \" cd client && yarn start\"",
+    "backend:start": "concurrently \"nodemon ./backend/src/index.js\"",
+    "start": "concurrently \" npm run client:start\" \" yarn run backend:start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/expiritus2/mega-messenger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/expiritus2/mega-messenger/issues"
+  },
+  "homepage": "https://github.com/expiritus2/mega-messenger#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}

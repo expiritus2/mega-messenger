@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { TELEGRAM, SKYPE, SLACK } from 'settings/app/messengers';
+import { TELEGRAM, SKYPE, SLACK, OUTLOOK } from 'settings/app/messengers';
 
-import { Telegram, Skype, Slack } from 'apps';
+import { Telegram, Skype, Slack, Outlook } from 'apps';
 
 const apps = {
     [TELEGRAM]: Telegram,
     [SKYPE]: Skype,
     [SLACK]: Slack,
+    [OUTLOOK]: Outlook,
 };
 
 const AppComponent = ({ currentApp, className }) => {
